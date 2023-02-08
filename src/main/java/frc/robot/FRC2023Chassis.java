@@ -9,10 +9,10 @@ public class FRC2023Chassis extends RoboDevice{
   private WestCoastDriveTrain m_driveTrain = 
     new WestCoastDriveTrain(  WiringConnections.LEFT_MASTER_CONTROLLER_ID,
                               WiringConnections.LEFT_SLAVE_1_CONTROLLER_ID,
-                              WiringConnections.LEFT_SLAVE_2_CONTROLLER_ID,
+                              //WiringConnections.LEFT_SLAVE_2_CONTROLLER_ID,
                               WiringConnections.RIGHT_MASTER_CONTROLLER_ID,
-                              WiringConnections.RIGHT_SLAVE_1_CONTROLLER_ID,
-                              WiringConnections.RIGHT_SLAVE_2_CONTROLLER_ID
+                              WiringConnections.RIGHT_SLAVE_1_CONTROLLER_ID
+                              //WiringConnections.RIGHT_SLAVE_2_CONTROLLER_ID
                            );
 
   private HuskyVector2D m_currentLocation;
