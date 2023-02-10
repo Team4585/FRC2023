@@ -19,20 +19,20 @@ public class WestCoastDriveTrain extends RoboDevice{
   private VictorSPX m_rightSlave2Controller;
 
 
-  public WestCoastDriveTrain(int leftMasterID, int leftSlaveID1, /*int leftSlaveID2,*/ int rightMasterID, int rightSlaveID1/*, int rightSlaveID2*/){
+  public WestCoastDriveTrain(int leftMasterID, int leftSlaveID1, int leftSlaveID2, int rightMasterID, int rightSlaveID1, int rightSlaveID2){
     super("WestCoastDriveTrain");
 
     m_leftMasterController = new VictorSPX(leftMasterID);
     m_leftSlave1Controller = new VictorSPX(leftSlaveID1);
-    //m_leftSlave2Controller = new VictorSPX(leftSlaveID2);
+    m_leftSlave2Controller = new VictorSPX(leftSlaveID2);
     m_rightMasterController = new VictorSPX(rightMasterID);
     m_rightSlave1Controller = new VictorSPX(rightSlaveID1);
-    //m_rightSlave2Controller = new VictorSPX(rightSlaveID2);
+    m_rightSlave2Controller = new VictorSPX(rightSlaveID2);
 
     m_leftSlave1Controller.follow(m_leftMasterController);
-    //m_leftSlave2Controller.follow(m_leftMasterController);
+    m_leftSlave2Controller.follow(m_leftMasterController);
     m_rightSlave1Controller.follow(m_rightMasterController);
-    //m_rightSlave2Controller.follow(m_rightMasterController);
+    m_rightSlave2Controller.follow(m_rightMasterController);
   }
 
   public void Initialize(){
