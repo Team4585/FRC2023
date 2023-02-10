@@ -8,6 +8,7 @@ public class FRC2023TeleopDecisionMaker {
   private PneumaticsCompressor m_TheCompressor = new PneumaticsCompressor();
   private ShifterControl m_TheShifter = new ShifterControl();
   private HandControl m_TheHand = new HandControl();
+  private ChassisEncoders m_ChassisEncoders = new ChassisEncoders();
 
 
 
@@ -40,6 +41,8 @@ public class FRC2023TeleopDecisionMaker {
       if (m_TheJoystick.button3ReleaseEvent()){
         m_TheHand.toggleHand();
       }
+
+      System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());
     }
   
 
