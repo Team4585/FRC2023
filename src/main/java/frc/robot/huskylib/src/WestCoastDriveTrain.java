@@ -71,7 +71,7 @@ public class WestCoastDriveTrain extends RoboDevice{
   public void doActions() {
     super.doActions();
 
-    m_leftMasterController.set(ControlMode.PercentOutput, m_targSpeed - m_targRotationSpeed);
+    m_leftMasterController.set(ControlMode.PercentOutput,  -m_targRotationSpeed -m_targSpeed);
     m_rightMasterController.set(ControlMode.PercentOutput, m_targRotationSpeed - m_targSpeed);
 
     // if(m_currentSpeed < m_targSpeed){

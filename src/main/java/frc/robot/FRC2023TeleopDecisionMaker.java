@@ -42,7 +42,7 @@ public class FRC2023TeleopDecisionMaker {
         m_TheHand.toggleHand();
       }
 
-      System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());
+      //System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());
     }
   
 
