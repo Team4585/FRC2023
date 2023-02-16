@@ -14,6 +14,14 @@ public class ShifterControl extends RoboDevice{
       ShifterSolenoid.set(!ShifterSolenoid.get());
     }
 
+    public void shiftHighGear(){
+      ShifterSolenoid.set(true);
+    }
+
+    public void shiftLowGear(){
+      ShifterSolenoid.set(false);
+    }
+
 
     public ShifterControl(){
         super("Shifter Sub System");

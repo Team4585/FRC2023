@@ -9,6 +9,7 @@ public class FRC2023TeleopDecisionMaker {
   private ShifterControl m_TheShifter = new ShifterControl();
   private HandControl m_TheHand = new HandControl();
   private ChassisEncoders m_ChassisEncoders = new ChassisEncoders();
+  private Gyro m_TheGyro = new Gyro();
 
 
 
@@ -43,6 +44,7 @@ public class FRC2023TeleopDecisionMaker {
       }
 
       //System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());
+      System.out.println(m_TheGyro.getHeading());
     }
   
 

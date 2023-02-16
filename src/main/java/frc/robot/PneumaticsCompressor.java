@@ -21,12 +21,13 @@ public class PneumaticsCompressor extends RoboDevice{
     shifterCompressor.enableDigital();
     System.out.println("Compressor on");
 
+    m_Timer.reset();
     m_Timer.start();
 
-    m_Timer.delay(1.5);
-
-    shifterCompressor.disable();
-    System.out.println("Compressor off");
+    if (m_Timer.hasElapsed(1.5)){
+      shifterCompressor.disable();
+      System.out.println("Compressor off");
+    }
   }
 
   public void toggleCompressor(){
