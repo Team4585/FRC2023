@@ -21,10 +21,12 @@ public class BasicPID {
     public double getError() { return m_error; }
 
     public void setTarget(double target) {m_target = target;}
+
     public void setPosition(double position) {
         m_lastPosition = m_position;
         m_position = position; 
     }
+    
     public void setP(double P) { m_P = P; }
     public void setI(double I) { m_I = I; }
     public void setD(double D) { m_D = D; }
