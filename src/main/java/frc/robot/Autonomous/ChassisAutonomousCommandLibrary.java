@@ -1,14 +1,14 @@
 package frc.robot.Autonomous;
 
 import edu.wpi.first.wpilibj.interfaces.Gyro;
-import frc.robot.ChassisEncoders;
 import frc.robot.WiringConnections;
+import frc.robot.Sussystems.ChassisEncoders;
 import frc.robot.huskylib.src.BasicPID;
 import frc.robot.huskylib.src.RoboDevice;
 import frc.robot.huskylib.src.WestCoastDriveTrain;
 
 public class ChassisAutonomousCommandLibrary extends RoboDevice{
-    private frc.robot.Gyro m_TheGyro = new frc.robot.Gyro();
+    private frc.robot.Sussystems.Gyro m_TheGyro = new frc.robot.Sussystems.Gyro();
     private ChassisEncoders m_TheChassisEncoders = new ChassisEncoders();
     private BasicPID m_BasicPID = new BasicPID();
     private WestCoastDriveTrain m_TheDriveTrain = new WestCoastDriveTrain(
