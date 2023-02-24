@@ -1,58 +1,107 @@
 package frc.robot.huskylib.src;
 
-public class BasicPID {
-    private double m_P;
-    private double m_I;
-    private double m_D;
-    private double m_errorSum;
-    private double m_error;
-    private double m_maxError;
-    private double m_maxOutput;
-    private double m_minOutput;
-    private double m_lastPosition;
-    private double m_target;
-    private double m_position;
+import frc.robot.huskylib.src.RoboDevice;
 
-    public double getTarget() { return m_target; }
-    public double getPosition(){return m_position; }
-    public double getP() { return m_P; }
-    public double getI() { return m_I; }
-    public double getD() { return m_D; }
-    public double getError() { return m_error; }
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.revrobotics.*;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-    public void setTarget(double target) {m_target = target;}
+public class BasicPID extends RoboDevice{
+  
+  private CANSparkMax m_motor;
+  private RelativeEncoder m_encoder;
+  private SparkMaxPIDController m_pidController;
 
-    public void setPosition(double position) {
-        m_lastPosition = m_position;
-        m_position = position; 
-    }
+  public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
+  public double rotations;
+  private double m_currentPosition = 0.0;
+
+  private int CANDeviceID;
+
+  public BasicPID(int CANPort){
+    super("BasicPID Sub System");
+    CANDeviceID = CANPort;
+
+    //Setting up devices
+    m_motor = new CANSparkMax(CANDeviceID, MotorType.kBrushless);
+    m_encoder = m_motor.getEncoder();
+    m_motor.restoreFactoryDefaults();
+
+    m_pidController = m_motor.getPIDController();
+    m_pidController.setFeedbackDevice(m_encoder);
+
+    //Setting up PID values
+    kP = 0.1;
+    kI = 1e-4;
+    kD = 1;
+    kIz = 0;
+    kFF = 0;
+    kMaxOutput = 1;
+    kMinOutput = -1;
     
-    public void setP(double P) { m_P = P; }
-    public void setI(double I) { m_I = I; }
-    public void setD(double D) { m_D = D; }
-    public void setMinOutput(double min) { m_minOutput = min; }
-    public void setMaxOutput(double max) { m_maxOutput = max; }
+    m_pidController.setP(kP);
+    m_pidController.setI(kI);
+    m_pidController.setD(kD);
+    m_pidController.setIZone(kIz);
+    m_pidController.setFF(kFF);
+    m_pidController.setOutputRange(kMinOutput, kMaxOutput);
+  }
 
-    public double calculateError() {
-        double output = 0;
-        m_error = m_target - m_position;
-        m_errorSum += m_error;
-        output += m_error * m_P;
-        output += m_errorSum * m_I;
-        output -= (m_position - m_lastPosition) * m_D;
-        //System.out.println("Output: " + output + " P: " + m_error * m_P + " I: " + m_errorSum * m_I + " D: " + (m_error - m_lastPosition) * m_D * -1);
-        //System.out.println("Error: " + m_error + " Last: " + m_lastPosition);
-        if(m_maxError != 0){
-            if(m_errorSum > m_maxError) {
-                m_errorSum = m_maxError;
-            }
-        }
-        if(output > m_maxOutput){
-            output = m_maxOutput;
-        }
-        if(output < m_minOutput){
-            output = m_minOutput;
-        }
-        return output;
-    }
+  public void Initialize(){
+  }
+
+  @Override
+  public void doGatherInfo(){
+    super.doGatherInfo();
+    m_currentPosition = m_encoder.getPosition();
+  }
+
+  @Override
+  public void doActions(){
+    super.doActions();
+     
+    //Magic line of code that gets it going!
+    m_pidController.setReference(rotations, CANSparkMax.ControlType.kPosition);
+  }
+
+  //Getter
+  public double getPosition(){
+    return m_currentPosition;
+  }
+
+  //Setters
+  //Attach a call to this method to an action on the joystick
+  public void setRotations(double percentoutput){
+    rotations = percentoutput;
+  }
+
+  public void setPValue(double kP){ 
+    m_pidController.setP(kP);
+  }
+
+  public void setIValue(double kI){ 
+    m_pidController.setI(kI);
+  }
+
+  public void setDValue(double kD){
+    m_pidController.setD(kD);
+  }
+
+  public void setIZValue(double kIz){ 
+    m_pidController.setIZone(kIz);
+  }
+    
+  public void setFFValue(double kFF){ 
+    m_pidController.setFF(kFF); 
+  }
+  
+  public void setOutputRangeValues(double min, double max){ 
+    m_pidController.setOutputRange(min, max); 
+    kMinOutput = min; kMaxOutput = max;
+  }
+
+  public void setSlave(BasicPID slaveMotor){
+    slaveMotor.m_motor.follow(m_motor, true);
+  }
+
 }

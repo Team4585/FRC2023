@@ -10,7 +10,7 @@ import frc.robot.huskylib.src.WestCoastDriveTrain;
 public class ChassisAutonomousCommandLibrary extends RoboDevice{
     private frc.robot.Sussystems.Gyro m_TheGyro = new frc.robot.Sussystems.Gyro();
     private ChassisEncoders m_TheChassisEncoders = new ChassisEncoders();
-    private BasicPID m_BasicPID = new BasicPID();
+    //private BasicPID m_BasicPID = new BasicPID();
     private WestCoastDriveTrain m_TheDriveTrain = new WestCoastDriveTrain(
         WiringConnections.LEFT_MASTER_CONTROLLER_ID,
         WiringConnections.LEFT_SLAVE_1_CONTROLLER_ID,
@@ -32,7 +32,9 @@ public class ChassisAutonomousCommandLibrary extends RoboDevice{
     }
 
 
+
     public void turnToHeading(double targetHeading){
+        /*
         m_BasicPID.setTarget(targetHeading);
         m_BasicPID.setPosition(robotHeading);
         m_BasicPID.setMaxOutput(100);
@@ -45,6 +47,7 @@ public class ChassisAutonomousCommandLibrary extends RoboDevice{
         System.out.println(m_BasicPID.calculateError());
 
         m_TheDriveTrain.setTargRotationSpeed(m_BasicPID.calculateError());
+        */
     }
 
 

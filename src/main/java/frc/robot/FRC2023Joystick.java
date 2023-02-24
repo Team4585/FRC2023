@@ -95,6 +95,10 @@ public class FRC2023Joystick extends HuskyJoystick{
     return isButtonPushed(TRIGGER_BUTTON);
   }
 
+  public Boolean button3Pushed(){
+    return isButtonPushed(2);
+  }
+
   public Boolean triggerPressEvent(){
     return buttonPressEvent(TRIGGER_BUTTON);
   }

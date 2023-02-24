@@ -1,12 +1,15 @@
 package frc.robot.Sussystems;
 
+import frc.robot.WiringConnections;
+import frc.robot.huskylib.src.BasicPID;
 import frc.robot.huskylib.src.RoboDevice;
-// import com.revrobotics.*;
-// import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.*;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Arm extends RoboDevice{
+  WiringConnections m_TheConnections = new WiringConnections();
 
-// private BasicPID left_motor;
+private BasicPID left_motor;
 // private BasicPID right_motor;
 // private CANSparkMax intakeMotor;
 
@@ -18,7 +21,7 @@ private static double positionThreshold = 0.05;
   public Arm(){
     super("Arm Sub System");
     //Comments are from wallE class from last year
-    // left_motor = new BasicPID(WiringConnections.LEFT_WALLE_CONTROLLER_ID);
+    left_motor = new BasicPID(WiringConnections.TEST_ARM_MOTOR_ID);
     // right_motor = new BasicPID(WiringConnections.RIGHT_WALLE_CONTROLLER_ID);
   
     // left_motor.setSlave(right_motor);
@@ -32,7 +35,7 @@ private static double positionThreshold = 0.05;
 
   public void testArm(){
     //Update the double for specific values
-    //left_motor.setRotations(targPosition);
+    left_motor.setRotations(targPosition + left_motor.getPosition());
     System.out.println("Testing the arm");
   }
 

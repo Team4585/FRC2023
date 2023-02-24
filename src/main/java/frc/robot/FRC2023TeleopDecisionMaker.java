@@ -1,5 +1,6 @@
 package frc.robot;
 
+import frc.robot.Sussystems.Arm;
 import frc.robot.Sussystems.ChassisEncoders;
 import frc.robot.Sussystems.Gyro;
 import frc.robot.Sussystems.PneumaticsCompressor;
@@ -14,6 +15,7 @@ public class FRC2023TeleopDecisionMaker {
   private ShifterControl m_TheShifter = new ShifterControl();
   private ChassisEncoders m_ChassisEncoders = new ChassisEncoders();
   private Gyro m_TheGyro = new Gyro();
+  private Arm m_TheArm = new Arm();
 
 
 
@@ -42,6 +44,10 @@ public class FRC2023TeleopDecisionMaker {
       if (m_TheJoystick.button5ReleaseEvent()){
         //m_TheCompressor.toggleCompressor();
         m_TheCompressor.toggleCompressor();
+      }
+
+      if (m_TheJoystick.button3Pushed()){
+        m_TheArm.testArm();
       }
 
       //System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());
