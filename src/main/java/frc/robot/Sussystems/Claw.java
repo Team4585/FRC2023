@@ -11,7 +11,7 @@ public class Claw extends RoboDevice{
 // private CANSparkMax intakeMotor;
 
 private double targPosition = 2.0;
-private double intakeSpeed = 0.0;
+private double armSpeed = 0.0;
 
 private static double positionThreshold = 0.05;
 
@@ -63,8 +63,8 @@ private static double positionThreshold = 0.05;
   //   left_motor.setRotations(0.0);
   // }
 
-  public void setIntakeSpeed(double speed){
-    intakeSpeed = speed;
+  public void setArmSpeed(double speed){
+    armSpeed = speed;
   }
 
   @Override
