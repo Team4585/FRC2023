@@ -50,6 +50,10 @@ public class FRC2023TeleopDecisionMaker {
         m_TheArm.testArm();
       }
 
+      if (m_TheJoystick.button3Pushed()){
+        m_TheArm.raiseArm();
+      }
+
       //System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());
       System.out.println(m_TheGyro.getHeading());
     }

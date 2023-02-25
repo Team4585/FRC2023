@@ -30,11 +30,11 @@ public class FRC2023AutonomousDecisionMaker {
   }
 
   public void initialize(){
-    m_autonomousTaskDisbatcher.resetAuto();
+    //m_autonomousTaskDisbatcher.resetAuto();
   }
 
   public void doDecisions(){
-    m_autonomousTaskDisbatcher.RunAutoTask();
+    //m_autonomousTaskDisbatcher.RunAutoTask();
   }
 
   public void setChassis(FRC2023Chassis TheChassis){

@@ -5,23 +5,23 @@ import frc.robot.huskylib.src.RoboDevice;
 
 
 public class ChassisEncoders extends RoboDevice{
-  Encoder m_LeftEncoder = new Encoder(2, 3);
-  Encoder m_RightEncoder = new Encoder(0, 1);
+  //Encoder m_LeftEncoder = new Encoder(2, 3);
+  //Encoder m_RightEncoder = new Encoder(0, 1);
 
   public double GetLeftRawEncoderValue(){
-    return m_LeftEncoder.getDistance();
+    return 0;//m_LeftEncoder.getDistance();
   }
 
   public double GetRightRawEncoderValue(){
-    return m_RightEncoder.getDistance();
+    return 0;//m_RightEncoder.getDistance();
   }
 
   public double GetLeftDegreesEncoderValue(){
-    return m_LeftEncoder.getDistance() * 3;
+    return 0;//m_LeftEncoder.getDistance() * 3;
   }
 
   public double GetRightDegreesEncoderValue(){
-    return m_RightEncoder.getDistance() * 3;
+    return 0;//m_RightEncoder.getDistance() * 3;
   }
 
   public ChassisEncoders(){
