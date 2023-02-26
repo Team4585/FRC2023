@@ -1,5 +1,11 @@
 package frc.robot;
 
+import frc.robot.Sussystems.Arm;
+import frc.robot.Sussystems.ChassisEncoders;
+import frc.robot.Sussystems.Gyro;
+import frc.robot.Sussystems.PneumaticsCompressor;
+import frc.robot.Sussystems.ShifterControl;
+
 public class FRC2023TeleopDecisionMaker {
   private FRC2023Joystick m_TheJoystick = new FRC2023Joystick();
 
@@ -7,15 +13,16 @@ public class FRC2023TeleopDecisionMaker {
   private FRC2023Chassis m_Chassis = new FRC2023Chassis();
   private PneumaticsCompressor m_TheCompressor = new PneumaticsCompressor();
   private ShifterControl m_TheShifter = new ShifterControl();
-  private HandControl m_TheHand = new HandControl();
   private ChassisEncoders m_ChassisEncoders = new ChassisEncoders();
   private Gyro m_TheGyro = new Gyro();
+  private Arm m_TheArm = new Arm();
 
 
 
   FRC2023TeleopDecisionMaker(){
 
   }
+  //Lets see if it blows up
 
   public void initialize(){
   }
@@ -39,8 +46,12 @@ public class FRC2023TeleopDecisionMaker {
         m_TheCompressor.toggleCompressor();
       }
 
-      if (m_TheJoystick.button3ReleaseEvent()){
-        m_TheHand.toggleHand();
+      if (m_TheJoystick.button3Pushed()){
+        m_TheArm.testArm();
+      }
+
+      if (m_TheJoystick.button3Pushed()){
+        m_TheArm.raiseArm();
       }
 
       //System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());

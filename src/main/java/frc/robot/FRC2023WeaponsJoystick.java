@@ -2,8 +2,8 @@ package frc.robot;
 
 import frc.robot.huskylib.devices.HuskyJoystick;
 
-public class FRC2023Joystick extends HuskyJoystick{
-  private static final int FRC2023_JOYSTICK_PORT = 0;
+public class FRC2023WeaponsJoystick extends HuskyJoystick{
+  private static final int FRC2023_WEAPONS_JOYSTICK_PORT = 1;
  
   private static final int TRIGGER_BUTTON = 0;
 
@@ -17,8 +17,8 @@ public class FRC2023Joystick extends HuskyJoystick{
   private static final double ROT_LIVE_ZONE = 1.0 - ROT_DEAD_ZONE;
 
 
-  public FRC2023Joystick(){
-      super(FRC2023_JOYSTICK_PORT);
+  public FRC2023WeaponsJoystick(){
+      super(FRC2023_WEAPONS_JOYSTICK_PORT);
   }
 
 
@@ -93,14 +93,6 @@ public class FRC2023Joystick extends HuskyJoystick{
 
   public Boolean triggerPushed(){
     return isButtonPushed(TRIGGER_BUTTON);
-  }
-
-  public Boolean button3Pushed(){
-    return isButtonPushed(2);
-  }
-
-  public Boolean button4Pushed(){
-    return isButtonPushed(3);
   }
 
   public Boolean triggerPressEvent(){
