@@ -10,6 +10,7 @@ public class FRC2023TeleopDecisionMaker {
   private HandControl m_TheHand = new HandControl();
   private ChassisEncoders m_ChassisEncoders = new ChassisEncoders();
   private Gyro m_TheGyro = new Gyro();
+  private Arm m_Arm = new Arm();
 
 
 
@@ -43,8 +44,21 @@ public class FRC2023TeleopDecisionMaker {
         m_TheHand.toggleHand();
       }
 
+      if (m_TheJoystick.button4Pushed()) {
+        m_Arm.lowDrop();
+      }
+
+      if (m_TheJoystick.button6Pushed()) {
+        m_Arm.mediumDrop();
+      }
+      
+      if(m_TheJoystick.button4ReleaseEvent()||
+      m_TheJoystick.button6ReleaseEvent()){
+        m_Arm.pickUp();
+      }
+
       //System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());
-      System.out.println(m_TheGyro.getHeading());
+     // System.out.println(m_TheGyro.getHeading());
     }
   
 
