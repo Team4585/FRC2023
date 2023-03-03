@@ -102,13 +102,40 @@ public class FRC2023Joystick extends HuskyJoystick{
   public Boolean triggerReleaseEvent(){
     return buttonReleaseEvent(TRIGGER_BUTTON);
   }
+  public Boolean button2ReleaseEvent(){
+    return buttonReleaseEvent(1);
+  }
+
+  public Boolean button3ReleaseEvent(){
+    return buttonReleaseEvent(2);
+  }
+
+  public Boolean button4ReleaseEvent(){
+    return buttonReleaseEvent(3);
+  }
 
   public Boolean button5ReleaseEvent(){
     return buttonReleaseEvent(4);
   }
 
-  public Boolean button3ReleaseEvent(){
-    return buttonReleaseEvent(2);
+  public Boolean button7ReleaseEvent(){
+    return buttonReleaseEvent(6);
+  }
+  
+  public Boolean button8ReleaseEvent(){
+    return buttonReleaseEvent(7);
+  }
+
+  public Boolean button5Pushed(){
+    return isButtonPushed(4);
+  }
+  
+  public Boolean button4Pushed(){
+    return isButtonPushed(3);
+  }
+  
+  public Boolean button3Pushed(){
+    return isButtonPushed(2);
   }
 
   public Boolean button6Pushed(){
@@ -117,13 +144,5 @@ public class FRC2023Joystick extends HuskyJoystick{
 
   public Boolean button6ReleaseEvent(){
     return buttonReleaseEvent(5);
-  }
-
-  public Boolean button4Pushed(){
-    return isButtonPushed(3);
-  }
-
-  public Boolean button4ReleaseEvent(){
-    return buttonReleaseEvent(3);
   }
 }

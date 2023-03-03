@@ -2,6 +2,7 @@ package frc.robot;
 
 public class FRC2023TeleopDecisionMaker {
   private FRC2023Joystick m_TheJoystick = new FRC2023Joystick();
+  private WeaponsJoystick m_TheWeaponsJoystick = new WeaponsJoystick();
 
   
   private FRC2023Chassis m_Chassis = new FRC2023Chassis();
@@ -32,29 +33,30 @@ public class FRC2023TeleopDecisionMaker {
 
       if (m_TheJoystick.triggerReleaseEvent()){
         m_TheShifter.toggleGear();
-        m_TheCompressor.enableAfterShift();
-      }
-  
-      if (m_TheJoystick.button5ReleaseEvent()){
-        //m_TheCompressor.toggleCompressor();
-        m_TheCompressor.toggleCompressor();
+        //m_TheCompressor.enableAfterShift();
       }
 
-      if (m_TheJoystick.button3ReleaseEvent()){
+      System.out.println(m_TheWeaponsJoystick.getForwardBackwardValue());
+      m_Arm.moveArm(m_TheWeaponsJoystick.getForwardBackwardValue());
+  
+      if (m_TheJoystick.button5ReleaseEvent() || m_TheWeaponsJoystick.button7ReleaseEvent()){
+        //m_TheCompressor.toggleCompressor();
+      }
+
+      if (m_TheWeaponsJoystick.button8ReleaseEvent()){
         m_TheHand.toggleHand();
       }
 
-      if (m_TheJoystick.button4Pushed()) {
-        m_Arm.lowDrop();
+      if (m_TheWeaponsJoystick.button5Pushed()) {
+        //m_Arm.lowDrop();
       }
 
-      if (m_TheJoystick.button6Pushed()) {
-        m_Arm.mediumDrop();
+      if (m_TheWeaponsJoystick.button3Pushed()) {
+        //m_Arm.mediumDrop();
       }
       
-      if(m_TheJoystick.button4ReleaseEvent()||
-      m_TheJoystick.button6ReleaseEvent()){
-        m_Arm.pickUp();
+      if(m_TheWeaponsJoystick.button5ReleaseEvent()|| m_TheJoystick.button3ReleaseEvent()){
+        //m_Arm.pickUp();
       }
 
       //System.out.println(m_ChassisEncoders.GetLeftDegreesEncoderValue());

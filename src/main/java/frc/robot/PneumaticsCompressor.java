@@ -1,5 +1,7 @@
 package frc.robot;
 
+import java.sql.Time;
+
 import com.revrobotics.AnalogInput;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -18,23 +20,22 @@ public class PneumaticsCompressor extends RoboDevice{
   private Timer m_Timer = new Timer();
 
   public void enableAfterShift(){
-    shifterCompressor.enableDigital();
+    shifterCompressor.enableAnalog(60, 85);
     System.out.println("Compressor on");
 
     m_Timer.reset();
     m_Timer.start();
 
-    if (m_Timer.hasElapsed(1.5)){
-      shifterCompressor.disable();
-      System.out.println("Compressor off");
-    }
+    while (m_Timer.hasElapsed(1.5) != true){}
+
+    shifterCompressor.disable();
   }
 
   public void toggleCompressor(){
 
     if (shifterCompressor.enabled() == false){
       //shifterPCM.enableCompressorAnalog(LOW_PRESSURE_THRESHOLD, HIGH_PRESSURE_THRESHOLD);
-      shifterCompressor.enableDigital();
+      shifterCompressor.enableAnalog(60, 85);
     }
     else{
       shifterCompressor.disable();
@@ -48,12 +49,15 @@ public class PneumaticsCompressor extends RoboDevice{
       }
     
       public void Initialize(){
-    
+        shifterCompressor.disable();
       }
     
       @Override
       public void doGatherInfo() {
         super.doGatherInfo();
+
+        
+        System.out.println(shifterCompressor.getAnalogVoltage());
       }
     
       @Override

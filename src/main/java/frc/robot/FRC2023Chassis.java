@@ -40,6 +40,11 @@ public class FRC2023Chassis extends RoboDevice{
     m_driveTrain.setTargRotationSpeed(targRot);
   }
 
+  public void driveStraight(){
+    setTargForwardBack(0.2);
+    setTargRotation(0.0);
+  }
+
   @Override
   public void doGatherInfo() {
     super.doGatherInfo();
@@ -49,6 +54,8 @@ public class FRC2023Chassis extends RoboDevice{
 
     m_currentLocation.addVec(m_currentVelocity);
   }
+
+
 
   public HuskyVector2D getCurrentLocation(){
     return m_currentLocation;
