@@ -11,7 +11,7 @@ public class Arm extends RoboDevice {
     private int medium = 90;
     
     private BasicPID m_leftMasterController;
-    private BasicPID m_leftSlave1Controller;
+    //private BasicPID m_leftSlave1Controller;
     private BasicPID m_leftSlave2Controller;
     
     
@@ -19,10 +19,10 @@ public class Arm extends RoboDevice {
         super("Arm Sub System");
     
         m_leftMasterController = new BasicPID(WiringConnections.ARM_MASTER_CONTROLLER_ID);
-        m_leftSlave1Controller = new BasicPID(WiringConnections.ARM_SLAVE_1_CONTROLLER_ID);
+        //m_leftSlave1Controller = new BasicPID(WiringConnections.ARM_SLAVE_1_CONTROLLER_ID);
         m_leftSlave2Controller = new BasicPID(WiringConnections.ARM_SLAVE_2_CONTROLLER_ID);
 
-        m_leftSlave1Controller.setSlave(m_leftMasterController);
+        //m_leftSlave1Controller.setSlave(m_leftMasterController);
         m_leftSlave2Controller.setSlave(m_leftMasterController);
       }
     

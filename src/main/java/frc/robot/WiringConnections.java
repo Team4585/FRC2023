@@ -65,7 +65,7 @@ public final class WiringConnections {
   public static final int RIGHT_SLAVE_2_CONTROLLER_ID = CAN_CHANNEL_3;
   
   public static final int ARM_MASTER_CONTROLLER_ID = CAN_CHANNEL_12;
-  public static final int ARM_SLAVE_1_CONTROLLER_ID = CAN_CHANNEL_11;
+ // public static final int ARM_SLAVE_1_CONTROLLER_ID = CAN_CHANNEL_11;
   public static final int ARM_SLAVE_2_CONTROLLER_ID = CAN_CHANNEL_8;
 
 

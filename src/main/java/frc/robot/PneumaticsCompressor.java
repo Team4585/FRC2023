@@ -54,6 +54,8 @@ public class PneumaticsCompressor extends RoboDevice{
       @Override
       public void doGatherInfo() {
         super.doGatherInfo();
+
+        System.out.println(shifterCompressor.getPressureSwitchValue());
       }
     
       @Override
