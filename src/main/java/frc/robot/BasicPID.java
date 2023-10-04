@@ -7,6 +7,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode.*;
 import com.revrobotics.*;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import org.opencv.core.Mat;
+
 public class BasicPID extends RoboDevice{
   
   private CANSparkMax m_motor;
@@ -32,13 +34,14 @@ public class BasicPID extends RoboDevice{
     m_pidController.setFeedbackDevice(m_encoder);
 
     //Setting up PID values
-    kP = 0.1; //Origional = 0.1
-    kI = 0; //Origional = 1e-4
-    kD = 1.5; //Origional = 1
+    kP = 0.1;
+    kI = 0;
+    kD = 0;
     kIz = 0;
     kFF = 0;
-    kMaxOutput = 1;
-    kMinOutput = -1;
+    kMaxOutput = 0.5;
+    kMinOutput = -0.5;
+    
     
     m_pidController.setP(kP);
     m_pidController.setI(kI);
@@ -61,6 +64,7 @@ public class BasicPID extends RoboDevice{
   @Override
   public void doActions(){
     super.doActions();
+    
      
     //Magic line of code that gets it going!
     m_pidController.setReference(rotations, CANSparkMax.ControlType.kPosition);

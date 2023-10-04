@@ -20,6 +20,7 @@ public class FRC2023TeleopDecisionMaker {
   }
 
   public void initialize(){
+    System.out.println("Initializing...");
   }
 
   public void doDecisions(){
@@ -36,14 +37,14 @@ public class FRC2023TeleopDecisionMaker {
         //m_TheCompressor.enableAfterShift();
       }
 
-      System.out.println(m_TheWeaponsJoystick.getForwardBackwardValue());
-      m_Arm.moveArm(m_TheWeaponsJoystick.getForwardBackwardValue());
+      //System.out.println(m_TheWeaponsJoystick.getForwardBackwardValue());
+      m_Arm.moveArm(-m_TheWeaponsJoystick.getForwardBackwardValue());
   
-      if (m_TheJoystick.button5ReleaseEvent() || m_TheWeaponsJoystick.button7ReleaseEvent()){
-        //m_TheCompressor.toggleCompressor();
+      if (m_TheJoystick.button5ReleaseEvent()){
+        m_TheCompressor.toggleCompressor();
       }
 
-      if (m_TheWeaponsJoystick.button8ReleaseEvent()){
+      if (m_TheWeaponsJoystick.triggerReleaseEvent()){
         m_TheHand.toggleHand();
       }
 

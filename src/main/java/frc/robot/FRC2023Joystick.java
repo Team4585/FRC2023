@@ -82,7 +82,7 @@ public class FRC2023Joystick extends HuskyJoystick{
       }
     }
         
-    RetVal = RetVal * Math.abs(RetVal) * Math.abs(RetVal);
+    RetVal = RetVal * Math.abs(RetVal) * Math.abs(RetVal) * Math.abs(RetVal);
     //if(RawVal != 0.0){
     //  System.out.println("RotRawVal -> " + RawVal + "    RotRetVal -> " + RetVal);
     //}

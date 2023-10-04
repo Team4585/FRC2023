@@ -35,7 +35,7 @@ public class PneumaticsCompressor extends RoboDevice{
 
     if (shifterCompressor.enabled() == false){
       //shifterPCM.enableCompressorAnalog(LOW_PRESSURE_THRESHOLD, HIGH_PRESSURE_THRESHOLD);
-      shifterCompressor.enableAnalog(60, 85);
+      shifterCompressor.enableDigital();
     }
     else{
       shifterCompressor.disable();
@@ -57,7 +57,7 @@ public class PneumaticsCompressor extends RoboDevice{
         super.doGatherInfo();
 
         
-        System.out.println(shifterCompressor.getAnalogVoltage());
+        //System.out.println(shifterCompressor.getAnalogVoltage());
       }
     
       @Override

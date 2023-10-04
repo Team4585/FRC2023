@@ -41,7 +41,7 @@ public class FRC2023Chassis extends RoboDevice{
   }
 
   public void driveStraight(){
-    setTargForwardBack(0.2);
+    setTargForwardBack(0.4);
     setTargRotation(0.0);
   }
 

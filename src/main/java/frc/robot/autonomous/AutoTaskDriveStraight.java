@@ -31,7 +31,7 @@ public class AutoTaskDriveStraight extends AutonomousTaskBase{
         }
 
 
-        if(m_timer.hasElapsed(4)){
+        if(m_timer.hasElapsed(2.25)){
             m_chassis.setTargForwardBack(0.0);
             return true;
         } else{

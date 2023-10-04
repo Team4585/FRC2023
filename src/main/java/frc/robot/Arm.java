@@ -14,10 +14,18 @@ public class Arm extends RoboDevice {
     private int pickUp = 0;
     private int low = 20;
     private int medium = 15;
+
+    private double masterShouldBePos;
+    private double slaveShouldBePos;
+    private static double positionThreshold = 0.1;
+
+    private boolean isInitialized;
+
+    private boolean isWithinTarget;
     
-    private CANSparkMax m_MasterController;
-    private CANSparkMax m_Slave1Controller;
-    private BasicPID m_Slave2Controller;
+    private BasicPID m_MasterController;
+    private BasicPID m_Slave1Controller;
+    private CANSparkMax m_Slave2Controller;
 
     private RelativeEncoder m_MasterEncoder;
     
@@ -25,22 +33,56 @@ public class Arm extends RoboDevice {
     public Arm(){
         super("Arm Sub System");
     
-        m_MasterController = new CANSparkMax(WiringConnections.ARM_MASTER_CONTROLLER_ID, MotorType.kBrushless);
-        m_Slave1Controller = new CANSparkMax(WiringConnections.ARM_SLAVE_1_CONTROLLER_ID, MotorType.kBrushless);
-        m_MasterEncoder = m_MasterController.getEncoder();
-        //m_leftSlave2Controller = new BasicPID(WiringConnections.ARM_SLAVE_2_CONTROLLER_ID);
+        m_MasterController = new BasicPID(WiringConnections.ARM_MASTER_CONTROLLER_ID);
+        m_Slave1Controller = new BasicPID(WiringConnections.ARM_SLAVE_1_CONTROLLER_ID);
 
-        //m_Slave1Controller.setSlave(m_MasterController);
+        //shouldBePos = m_MasterController.getPosition();
+        m_Slave1Controller.setSlave(m_MasterController);
         //m_leftSlave2Controller.setSlave(m_leftMasterController);
+
+        
+        //System.out.println("Initialize in arm");
+        masterShouldBePos = m_MasterController.getPosition();
+        //slaveShouldBePos = m_Slave1Controller.getPosition();
+        
       }
     
       public void Initialize(){
-    
       }
 
       public void moveArm(double speed){
-        m_MasterController.set(speed);
-        m_Slave1Controller.set(speed);
+        if (isInitialized != true){
+          masterShouldBePos = m_MasterController.getPosition();
+          isInitialized = true;
+        }else{
+          masterShouldBePos = masterShouldBePos - speed / 5;
+
+          
+          //System.out.println("Current: " + m_MasterController.getPosition() + ", Target: " + masterShouldBePos);
+
+          if (posIsCorrect(masterShouldBePos, m_MasterController.getPosition(), positionThreshold)){
+            //System.out.println("Within bounds");
+          }else{
+            //System.out.println("Outside bounds");
+            
+          }
+          
+          m_MasterController.setRotations(masterShouldBePos);
+          //m_Slave1Controller.setRotations(slaveShouldBePos);
+  
+        }
+      }
+
+      public boolean posIsCorrect(double targetPos, double currentPos, double maxError){
+        //System.out.println("CurrentPos: " + currentPos + " TargetPos: " + targetPos + " MathResult: " + Math.abs(Math.abs(currentPos) - Math.abs(targetPos)));
+
+        if (Math.abs(Math.abs(currentPos) - Math.abs(targetPos)) < maxError){
+          isWithinTarget = true;
+          return true;
+        }else{
+          isWithinTarget = false;
+          return false;
+        }
       }
 
 
