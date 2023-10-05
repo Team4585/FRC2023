@@ -73,7 +73,7 @@ public class Arm extends RoboDevice {
         }
       }
 
-      public boolean posIsCorrect(double targetPos, double currentPos, double maxError){
+      private boolean posIsCorrect(double targetPos, double currentPos, double maxError){
         //System.out.println("CurrentPos: " + currentPos + " TargetPos: " + targetPos + " MathResult: " + Math.abs(Math.abs(currentPos) - Math.abs(targetPos)));
 
         if (Math.abs(Math.abs(currentPos) - Math.abs(targetPos)) < maxError){

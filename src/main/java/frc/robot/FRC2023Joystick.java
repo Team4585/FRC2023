@@ -7,6 +7,8 @@ public class FRC2023Joystick extends HuskyJoystick{
  
   private static final int TRIGGER_BUTTON = 0;
 
+  //Dead zone is how much you have to move the joystick for values to be read
+  //Live zone is the input range that actually sends input to the rest of the code
   private static final double FB_DEAD_ZONE = 0.1;
   private static final double FB_LIVE_ZONE = 1.0 - FB_DEAD_ZONE;
 
@@ -17,11 +19,18 @@ public class FRC2023Joystick extends HuskyJoystick{
   private static final double ROT_LIVE_ZONE = 1.0 - ROT_DEAD_ZONE;
 
 
+  /**
+   * Wheeee construct the joystick, sending the port number to the parent class
+   */
   public FRC2023Joystick(){
       super(FRC2023_JOYSTICK_PORT);
   }
 
 
+  /**
+   * Returns the forward/back value of the joystick, computing the deadzone and (currently nonexistent) input curve
+   * @return the forward/back value of the joystick
+   */
   public double getForwardBackwardValue(){
     double RetVal = 0.0;
     double RawVal = getAxisValue(HuskyJoystick.AXIS_FORWARD_BACKWARD);
@@ -37,7 +46,7 @@ public class FRC2023Joystick extends HuskyJoystick{
       }
     }
     
-    RetVal = RetVal * Math.abs(RetVal);
+    RetVal = RetVal * Math.abs(RetVal); // Input curve
         
     //if(RawVal != 0.0){
     //  System.out.println("FBRawVal -> " + RawVal + "    FBRetVal -> " + RetVal);
@@ -46,6 +55,10 @@ public class FRC2023Joystick extends HuskyJoystick{
     return RetVal;
   }
 
+  /**
+   * Returns the side-to-side value of the joystick, computing the deadzone and input curve
+   * @return the side-to-sid value of the joystick
+   */
   public double getSideToSideValue(){
     double RetVal = 0.0;
     double RawVal = getAxisValue(HuskyJoystick.AXIS_SIDE_TO_SIDE);
@@ -60,7 +73,7 @@ public class FRC2023Joystick extends HuskyJoystick{
       }
     }
     
-    RetVal = RetVal * Math.abs(RetVal);
+    RetVal = RetVal * Math.abs(RetVal); // Input curve to the power of 2
 
     //if(RawVal != 0.0){
     //  System.out.println("SSRawVal -> " + RawVal + "    SSRetVal -> " + RetVal);
@@ -69,6 +82,11 @@ public class FRC2023Joystick extends HuskyJoystick{
     return RetVal;
   }
 
+
+  /**
+   * Returns the twist value of the joystick, computing the deadzone and input curve
+   * @return the twist value of the joystick
+   */
   public double getTwistValue(){
     double RetVal = 0.0;
     double RawVal = getAxisValue(HuskyJoystick.AXIS_TWIST);
@@ -82,7 +100,7 @@ public class FRC2023Joystick extends HuskyJoystick{
       }
     }
         
-    RetVal = RetVal * Math.abs(RetVal) * Math.abs(RetVal) * Math.abs(RetVal);
+    RetVal = RetVal * Math.abs(RetVal) * Math.abs(RetVal) * Math.abs(RetVal); // Input curve to the power of 4
     //if(RawVal != 0.0){
     //  System.out.println("RotRawVal -> " + RawVal + "    RotRetVal -> " + RetVal);
     //}
@@ -91,6 +109,10 @@ public class FRC2023Joystick extends HuskyJoystick{
   }
 
 
+  /**
+   * Is the trigger pulled?
+   * @return true if pulled, false if released
+   */
   public Boolean triggerPushed(){
     return isButtonPushed(TRIGGER_BUTTON);
   }
