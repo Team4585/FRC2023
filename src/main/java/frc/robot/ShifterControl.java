@@ -8,16 +8,24 @@ public class ShifterControl extends RoboDevice{
     Solenoid ShifterSolenoid = new Solenoid(0, PneumaticsModuleType.CTREPCM, 0);
 
 
-    //Decompressed is high gear
+    /**
+     * Toggles the gear of the drivetrain
+     * Depressurized is high gear (speedy)
+     */
     public void toggleGear(){
-      System.out.println("The shifter is " + ShifterSolenoid.get());
       ShifterSolenoid.set(!ShifterSolenoid.get());
     }
 
+    /**
+     * Shifts into high gear (speedy)
+     */
     public void shiftHighGear(){
       ShifterSolenoid.set(true);
     }
 
+    /**
+     * Shifts into low gear (powerful)
+     */
     public void shiftLowGear(){
       ShifterSolenoid.set(false);
     }

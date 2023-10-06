@@ -111,60 +111,113 @@ public class FRC2023Joystick extends HuskyJoystick{
 
   /**
    * Is the trigger pulled?
-   * @return true if pulled, false if released
+   * @return CONTINUALLY returns true if pulled, false if released
    */
   public Boolean triggerPushed(){
     return isButtonPushed(TRIGGER_BUTTON);
   }
 
+  /**
+   * Fires when the trigger is pulled (not reliable)
+   * @return true only once when pulled
+   */
   public Boolean triggerPressEvent(){
     return buttonPressEvent(TRIGGER_BUTTON);
   }
     
+  /**
+   * Fires when the trigger is released. More reliable than PressEvent
+   * @return true only once when released
+   */
   public Boolean triggerReleaseEvent(){
     return buttonReleaseEvent(TRIGGER_BUTTON);
   }
+
+  /**
+   * Fires when the button 2 is released
+   * @return true only once when released
+   */
   public Boolean button2ReleaseEvent(){
     return buttonReleaseEvent(1);
   }
 
+  /**
+   * Fires when the button 3 is released
+   * @return true only once when released
+   */
   public Boolean button3ReleaseEvent(){
     return buttonReleaseEvent(2);
   }
 
+  /**
+   * Fires when the button 4 is released
+   * @return true only once when released
+   */
   public Boolean button4ReleaseEvent(){
     return buttonReleaseEvent(3);
   }
 
+  /**
+   * Fires when the button 5 is released
+   * @return true only once when released
+   */
   public Boolean button5ReleaseEvent(){
     return buttonReleaseEvent(4);
   }
 
+  /**
+   * Fires when the button 6 is released
+   * @return true only once when release
+   */
+  public Boolean button6ReleaseEvent(){
+    return buttonReleaseEvent(5);
+  }
+
+  /**
+   * Fires when the button 7 is released
+   * @return true only once when release
+   */
   public Boolean button7ReleaseEvent(){
     return buttonReleaseEvent(6);
   }
   
+  /**
+   * Fires when the button 8 is released
+   * @return true only once when release
+   */
   public Boolean button8ReleaseEvent(){
     return buttonReleaseEvent(7);
   }
 
+  /**
+   * Is button 5 pressed?
+   * @return returns CONTINUALLY true if pulled, false if released
+   */
   public Boolean button5Pushed(){
     return isButtonPushed(4);
   }
   
+  /**
+   * Is button 4 pressed?
+   * @return returns CONTINUALLY true if pulled, false if released
+   */
   public Boolean button4Pushed(){
     return isButtonPushed(3);
   }
   
+  /**
+   * Is button 3 pressed?
+   * @return returns CONTINUALLY true if pulled, false if released
+   */
   public Boolean button3Pushed(){
     return isButtonPushed(2);
   }
 
+  /**
+   * Is button 6 pressed?
+   * @return returns CONTINUALLY true if pulled, false if released
+   */
   public Boolean button6Pushed(){
     return isButtonPushed(5);
-  }
-
-  public Boolean button6ReleaseEvent(){
-    return buttonReleaseEvent(5);
   }
 }

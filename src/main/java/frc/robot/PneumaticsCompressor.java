@@ -10,6 +10,9 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.huskylib.src.RoboDevice;
 
+/**
+ * This class controls the pneumatic compressor on Sparky
+ */
 public class PneumaticsCompressor extends RoboDevice{
   private final int LOW_PRESSURE_THRESHOLD = 45;
   private final int HIGH_PRESSURE_THRESHOLD = 50;
@@ -17,6 +20,8 @@ public class PneumaticsCompressor extends RoboDevice{
   private boolean compShouldBeOn;
 
   Compressor shifterCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
+
+  /*
   private Timer m_Timer = new Timer();
 
   public void enableAfterShift(){
@@ -30,9 +35,13 @@ public class PneumaticsCompressor extends RoboDevice{
 
     shifterCompressor.disable();
   }
+  */
 
+  /**
+   * Turns the compressor on or off
+   * Should not be used, as the compressor automatically shuts off at 120 psi
+   */
   public void toggleCompressor(){
-
     if (shifterCompressor.enabled() == false){
       //shifterPCM.enableCompressorAnalog(LOW_PRESSURE_THRESHOLD, HIGH_PRESSURE_THRESHOLD);
       shifterCompressor.enableDigital();
