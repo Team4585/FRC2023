@@ -33,16 +33,16 @@ public class Arm extends RoboDevice {
     public Arm(){
         super("Arm Sub System");
     
-        //m_MasterController = new BasicPID(WiringConnections.ARM_MASTER_CONTROLLER_ID);
+        m_MasterController = new BasicPID(WiringConnections.ARM_MASTER_CONTROLLER_ID);
         //m_Slave1Controller = new BasicPID(WiringConnections.ARM_SLAVE_1_CONTROLLER_ID);
 
-        //shouldBePos = m_MasterController.getPosition();
-        //   m_Slave1Controller.setSlave(m_MasterController);
+        masterShouldBePos = m_MasterController.getPosition();
+        //m_Slave1Controller.setSlave(m_MasterController);
         //m_leftSlave2Controller.setSlave(m_leftMasterController);
 
         
         //System.out.println("Initialize in arm");
-        //   masterShouldBePos = m_MasterController.getPosition();
+        masterShouldBePos = m_MasterController.getPosition();
         //slaveShouldBePos = m_Slave1Controller.getPosition();
         
       }

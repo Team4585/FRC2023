@@ -11,7 +11,7 @@ public class FRC2023TeleopDecisionMaker {
   private HandControl m_TheHand = new HandControl();
   private ChassisEncoders m_ChassisEncoders = new ChassisEncoders();
   private Gyro m_TheGyro = new Gyro();
-  //private Arm m_Arm = new Arm();
+  private Arm m_Arm = new Arm();
 
 
 
@@ -38,7 +38,7 @@ public class FRC2023TeleopDecisionMaker {
       }
 
       //System.out.println(m_TheWeaponsJoystick.getForwardBackwardValue());
-      //  m_Arm.moveArm(-m_TheWeaponsJoystick.getForwardBackwardValue());
+      m_Arm.moveArm(-m_TheWeaponsJoystick.getForwardBackwardValue());
   
       if (m_TheJoystick.button5ReleaseEvent()){
         m_TheCompressor.toggleCompressor();
